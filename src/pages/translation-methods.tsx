@@ -1,21 +1,8 @@
-import type { GetStaticProps, NextPage } from 'next';
-import { getServerLocales, TolgeeNextProvider } from '../tolgeeNext';
-import { TranslationMethods } from '../views/TranslationMethods';
+import type { NextPage } from "next";
+import { TranslationMethods } from "../views/TranslationMethods";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: {
-      locales: await getServerLocales(context.locale, ['', 'namespaced']),
-    },
-  };
-};
-
-const Home: NextPage<{ locales: any }> = ({ locales }) => {
-  return (
-    <TolgeeNextProvider locales={locales}>
-      <TranslationMethods />
-    </TolgeeNextProvider>
-  );
+const Home: NextPage = () => {
+  return <TranslationMethods />;
 };
 
 export default Home;
